@@ -1,3 +1,11 @@
+delete from REVIEW_ENTITY;
+delete from BOOK_ENTITY_AUTHORS;
+delete from AUTHOR_ENTITY;
+delete from BOOK_ENTITY;
+delete from EDITORIAL_ENTITY;
+delete from ORGANIZATION_ENTITY;
+delete from PRIZE_ENTITY;
+
 insert into EDITORIAL_ENTITY (id, name) values (1000,'BLOOMSBURY');
 insert into EDITORIAL_ENTITY (id, name) values (1001,'ANCHOR');
 insert into EDITORIAL_ENTITY (id, name) values (1002,'W. W. Norton & Company');
