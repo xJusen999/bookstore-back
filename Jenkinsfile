@@ -40,7 +40,7 @@ pipeline {
                   sh '''
                      java -version
                      which mvn
-                     /usr/bin/mvn clean package
+                     ./mvnw clean package
                   '''
                }
             }
