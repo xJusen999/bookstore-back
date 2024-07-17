@@ -51,7 +51,7 @@ pipeline {
             script {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {                  
                   sh '''
-                     ./mvnw clean test
+                     mvn clean test
                   '''
                }
             }
@@ -63,7 +63,7 @@ pipeline {
             script {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
-                     ./mvnw clean verify sonar:sonar -Dsonar.host.url=${SONARQUBE_URL}
+                     mvn clean verify sonar:sonar -Dsonar.host.url=${SONARQUBE_URL}
                   '''
                }
             }
