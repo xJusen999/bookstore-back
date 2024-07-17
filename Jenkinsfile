@@ -36,7 +36,7 @@ pipeline {
          // Build artifacts
          steps {
             script {
-               docker.image('citools-isis2603:latest').inside('-v ${WORKSPACE}/maven:/root/.m2') {
+               docker.image('citools-isis2603:latest') {
                   sh '''
                      java -version
                      chmod +x mvnw
