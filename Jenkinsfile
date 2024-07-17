@@ -39,9 +39,7 @@ pipeline {
                docker.image('citools-isis2603:latest').inside('-v ${WORKSPACE}/maven:/root/.m2') {
                   sh '''
                      java -version
-                     which mvn
-                     chmod +x mvnw
-                     mvn clean package
+                     ./mvnw clean package
                   '''
                }
             }
