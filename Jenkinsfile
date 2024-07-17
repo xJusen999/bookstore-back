@@ -40,7 +40,7 @@ pipeline {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
                      java -version
-                     mvn clean package
+                     mvn clean install
                   '''
                }
             }
@@ -52,7 +52,7 @@ pipeline {
             script {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {                  
                   sh '''
-                     mvn clean test
+                     mvn test
                   '''
                }
             }
