@@ -40,7 +40,7 @@ pipeline {
                   sh '''
                      java -version
                      chmod +x mvnw
-                     ./mvnw clean package
+                     mvn clean package
                   '''
                }
             }
