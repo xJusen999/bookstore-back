@@ -5,7 +5,7 @@ pipeline {
       GIT_CREDENTIAL_ID = '7c21addc-0cbf-4f2e-9bd8-eced479c56c6'
       SONARQUBE_URL = 'http://172.24.101.209:8082/sonar-isis2603'
       ARCHID_TOKEN = credentials('archid')
-      SONAR_LOGIN = credentials('sonar-login')
+      SONAR_TOKEN = credentials('sonar-login')
    }
    stages { 
       stage('Checkout') { 
@@ -64,7 +64,7 @@ pipeline {
             script {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
-                     mvn sonar:sonar -Dsonar.login=${SONAR_LOGIN} -Dsonar.host.url=${SONARQUBE_URL}
+                     mvn sonar:sonar -Dsonar.token=${SONAR_TOKEN} -Dsonar.host.url=${SONARQUBE_URL}
                   '''
                }
             }
