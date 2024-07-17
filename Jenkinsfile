@@ -36,7 +36,7 @@ pipeline {
          // Build artifacts
          steps {
             script {
-               docker.image('citools-isis2603:latest').inside('-v ${WORKSPACE}/maven:/root/.m2') {
+               docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
                      java -version
                      mvn clean package
