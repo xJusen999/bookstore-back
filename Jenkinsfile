@@ -63,7 +63,7 @@ pipeline {
             script {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
-                     mvn clean verify sonar:sonar -Dsonar.host.url=${SONARQUBE_URL}
+                     mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar -Dsonar.host.url=${SONARQUBE_URL}
                   '''
                }
             }
