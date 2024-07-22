@@ -12,7 +12,7 @@
 	<artifactId>bookstore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>bookstore</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Backend project for BookStore</description>
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>21</java.version>
