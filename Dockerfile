@@ -3,5 +3,6 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean package -DskipTests
-COPY /app/target/*.jar app.jar
+FROM eclipse-temurin:21-jdk-alpine
+COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
