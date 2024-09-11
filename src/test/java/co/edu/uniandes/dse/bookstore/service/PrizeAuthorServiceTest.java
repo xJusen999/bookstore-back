@@ -172,7 +172,7 @@ class PrizeAuthorServiceTest {
 	 * @throws EntityNotFoundException
 	 */
 	@Test
-	void testGetAuthorInvalidPrize() throws EntityNotFoundException {
+	void testGetAuthorInvalidPrize() {
 		assertThrows(EntityNotFoundException.class, () -> {
 			prizeAuthorService.getAuthor(0L);
 		});
@@ -184,7 +184,7 @@ class PrizeAuthorServiceTest {
 	 * @throws EntityNotFoundException
 	 */
 	@Test
-	void testGetAuthorNotPrize() throws EntityNotFoundException {
+	void testGetAuthorNotPrize() {
 		assertThrows(EntityNotFoundException.class, () -> {
 			PrizeEntity prize = prizesList.get(1);
 			prizeAuthorService.getAuthor(prize.getId());
@@ -203,7 +203,7 @@ class PrizeAuthorServiceTest {
 		prizeAuthorService.replaceAuthor(prizesList.get(1).getId(), entity.getId());
 
 		PrizeEntity prize = entityManager.find(PrizeEntity.class, prizesList.get(1).getId());
-		assertTrue(prize.getAuthor().equals(entity));
+		assertEquals(prize.getAuthor(), entity);
 	}
 
 	/**
@@ -226,7 +226,7 @@ class PrizeAuthorServiceTest {
 	 * @throws EntityNotFoundException
 	 */
 	@Test
-	void testReplaceAuthorInvalidPrize() throws EntityNotFoundException {
+	void testReplaceAuthorInvalidPrize() {
 		assertThrows(EntityNotFoundException.class, () -> {
 			AuthorEntity entity = authorsList.get(0);
 			prizeAuthorService.replaceAuthor(0L, entity.getId());
@@ -242,7 +242,7 @@ class PrizeAuthorServiceTest {
 	 * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 	 */
 	@Test
-	public void testRemovePrize() throws EntityNotFoundException {
+	void testRemovePrize() throws EntityNotFoundException {
 		prizeAuthorService.removeAuthor(prizesList.get(0).getId());
 		PrizeEntity prize = entityManager.find(PrizeEntity.class, prizesList.get(0).getId());
 		assertNull(prize.getAuthor());
@@ -256,7 +256,7 @@ class PrizeAuthorServiceTest {
 	 * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 	 */
 	@Test
-	public void testRemoveInvalidPrize(){
+	void testRemoveInvalidPrize(){
 		assertThrows(EntityNotFoundException.class, ()->{
 			prizeAuthorService.removeAuthor(0L);
 		});

@@ -105,7 +105,7 @@ class OrganizationServiceTest {
 	 * Prueba para crear una Organization.
 	 */
 	@Test
-	void testCreateOrganization() throws EntityNotFoundException, IllegalOperationException {
+	void testCreateOrganization() throws IllegalOperationException {
 		OrganizationEntity newEntity = factory.manufacturePojo(OrganizationEntity.class);
 		OrganizationEntity result = organizationService.createOrganization(newEntity);
 

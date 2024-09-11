@@ -123,7 +123,7 @@ class ReviewServiceTest {
 	 * Prueba para crear un Review con un libro que no existe.
 	 */
 	@Test
-	void testCreateReviewInvalidBook() throws EntityNotFoundException {
+	void testCreateReviewInvalidBook() {
 		assertThrows(EntityNotFoundException.class, () -> {
 			ReviewEntity newEntity = factory.manufacturePojo(ReviewEntity.class);
 			reviewService.createReview(0L, newEntity);
@@ -217,7 +217,7 @@ class ReviewServiceTest {
 	 * Prueba para actualizar un Review de un libro que no existe.
 	 */
 	@Test
-	void testUpdateReviewInvalidBook() throws EntityNotFoundException {
+	void testUpdateReviewInvalidBook() {
 		assertThrows(EntityNotFoundException.class, ()->{
 			ReviewEntity entity = reviewList.get(0);
 			ReviewEntity pojoEntity = factory.manufacturePojo(ReviewEntity.class);

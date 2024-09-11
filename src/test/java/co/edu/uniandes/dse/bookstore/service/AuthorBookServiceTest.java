@@ -153,7 +153,7 @@ class AuthorBookServiceTest {
 		assertThrows(EntityNotFoundException.class, () -> {
 			BookEntity newBook = factory.manufacturePojo(BookEntity.class);
 			newBook.setEditorial(editorial);
-			bookService.createBook(newBook);
+			entityManager.persist(newBook);
 			authorBookService.addBook(0L, newBook.getId());
 		});
 	}
@@ -261,7 +261,7 @@ class AuthorBookServiceTest {
 	 * @throws EntityNotFoundException, IllegalOperationException
 	 */
 	@Test
-	void testReplaceBooks() throws EntityNotFoundException, IllegalOperationException {
+	void testReplaceBooks() throws EntityNotFoundException {
 		List<BookEntity> nuevaLista = new ArrayList<>();
 		
 		for (int i = 0; i < 3; i++) {
@@ -291,7 +291,7 @@ class AuthorBookServiceTest {
 			for (int i = 0; i < 3; i++) {
 				BookEntity entity = factory.manufacturePojo(BookEntity.class);
 				entity.setEditorial(editorial);
-				bookService.createBook(entity);
+				entityManager.persist(entity);
 				nuevaLista.add(entity);
 			}
 			authorBookService.addBooks(0L, nuevaLista);

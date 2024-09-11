@@ -104,7 +104,7 @@ class EditorialServiceTest {
 	 * @throws EntityNotFoundException, IllegalOperationException
 	 */
 	@Test
-	void testCreateEditorial() throws EntityNotFoundException, IllegalOperationException {
+	void testCreateEditorial() throws IllegalOperationException {
 		EditorialEntity newEntity = factory.manufacturePojo(EditorialEntity.class);
 		EditorialEntity result = editorialService.createEditorial(newEntity);
 		assertNotNull(result);

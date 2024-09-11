@@ -148,7 +148,7 @@ class BookAuthorServiceTest {
 	 *
 	 */
 	@Test
-	void testAddAuthorInvalidBook() throws EntityNotFoundException, IllegalOperationException {
+	void testAddAuthorInvalidBook() throws EntityNotFoundException {
 		assertThrows(EntityNotFoundException.class, ()->{
 			AuthorEntity author = factory.manufacturePojo(AuthorEntity.class);
 			entityManager.persist(author);

@@ -173,7 +173,7 @@ class BookEditorialServiceTest {
 	 * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 	 */
 	@Test
-	void testRemoveEditorialInvalidBook() throws EntityNotFoundException {
+	void testRemoveEditorialInvalidBook() {
 		assertThrows(EntityNotFoundException.class, ()->{
 			bookEditorialService.removeEditorial(0L);
 		});

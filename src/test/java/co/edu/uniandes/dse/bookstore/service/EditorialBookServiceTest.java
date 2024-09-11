@@ -232,7 +232,7 @@ class EditorialBookServiceTest {
 	 * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
 	 */
 	@Test
-	public void getBookNoAsociadoTest() {
+	void getBookNoAsociadoTest() {
 		assertThrows(IllegalOperationException.class, () -> {
 			EditorialEntity entity = editorialsList.get(0);
 			BookEntity bookEntity = booksList.get(1);
@@ -252,7 +252,7 @@ class EditorialBookServiceTest {
 
 		for (BookEntity book : list) {
 			BookEntity b = entityManager.find(BookEntity.class, book.getId());
-			assertTrue(b.getEditorial().equals(entity));
+			assertEquals(b.getEditorial(), entity);
 		}
 	}
 	
@@ -279,7 +279,7 @@ class EditorialBookServiceTest {
 	 * Editorial que no existe.
 	 */
 	@Test
-	void testReplaceBooksInvalidEditorial() throws EntityNotFoundException {
+	void testReplaceBooksInvalidEditorial() {
 		assertThrows(EntityNotFoundException.class, ()->{
 			List<BookEntity> list = booksList.subList(1, 3);
 			editorialBookService.replaceBooks(0L, list);
