@@ -262,6 +262,16 @@ class ReviewServiceTest {
 		});
 	}
 
+	/**
+     * Prueba para eliminar un Review que no existe de un libro.
+     */
+	@Test
+	void testDeleteInvalidReview()  {
+		assertThrows(EntityNotFoundException.class, ()->{
+			reviewService.deleteReview(bookEntity.getId(), 0L);
+		});
+	}
+	
 	 /**
      * Prueba para eliminarle un review a un book del cual no pertenece.
      */
