@@ -35,6 +35,7 @@ import co.edu.uniandes.dse.bookstore.entities.BookEntity;
 import co.edu.uniandes.dse.bookstore.entities.ReviewEntity;
 import co.edu.uniandes.dse.bookstore.exceptions.EntityNotFoundException;
 import co.edu.uniandes.dse.bookstore.exceptions.ErrorMessage;
+import co.edu.uniandes.dse.bookstore.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.bookstore.repositories.BookRepository;
 import co.edu.uniandes.dse.bookstore.repositories.ReviewRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -156,20 +157,24 @@ public class ReviewService {
 	 * @param reviewId Identificador de la instancia a eliminar.
 	 * @param bookId   id del Book el cual es padre del Review.
 	 * @throws EntityNotFoundException Si la reseña no esta asociada al libro.
+	 * @throws IllegalOperationException 
 	 *
 	 */
 	@Transactional
-	public void deleteReview(Long bookId, Long reviewId) throws EntityNotFoundException {
+	public void deleteReview(Long bookId, Long reviewId) throws EntityNotFoundException, IllegalOperationException {
 		log.info("Inicia proceso de borrar el review con id = {0} del libro con id = " + bookId,
 				reviewId);
 		Optional<BookEntity> bookEntity = bookRepository.findById(bookId);
 		if (bookEntity.isEmpty())
 			throw new EntityNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
 
-		ReviewEntity review = getReview(bookId, reviewId);
-		if (review == null) {
+		Optional<ReviewEntity> reviewEntity = reviewRepository.findById(reviewId);
+		if (reviewEntity.isEmpty())
 			throw new EntityNotFoundException(ErrorMessage.REVIEW_NOT_FOUND);
-		}
+		
+		if(!reviewEntity.get().getBook().getId().equals(bookId))
+			throw new IllegalOperationException(ErrorMessage.REVIEW_NOT_ASSOCIATED_TO_BOOK);
+		
 		reviewRepository.deleteById(reviewId);
 		log.info("Termina proceso de borrar el review con id = {0} del libro con id = " + bookId,
 				reviewId);

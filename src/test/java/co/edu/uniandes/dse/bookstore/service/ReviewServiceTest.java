@@ -42,6 +42,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import co.edu.uniandes.dse.bookstore.entities.BookEntity;
 import co.edu.uniandes.dse.bookstore.entities.ReviewEntity;
 import co.edu.uniandes.dse.bookstore.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.bookstore.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.bookstore.services.ReviewService;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -240,9 +241,10 @@ class ReviewServiceTest {
 
 	/**
      * Prueba para eliminar un Review.
+	 * @throws IllegalOperationException 
      */
 	@Test
-	void testDeleteReview() throws EntityNotFoundException {
+	void testDeleteReview() throws EntityNotFoundException, IllegalOperationException {
 		ReviewEntity entity = reviewList.get(0);
 		reviewService.deleteReview(bookEntity.getId(), entity.getId());
 		ReviewEntity deleted = entityManager.find(ReviewEntity.class, entity.getId());
@@ -265,7 +267,7 @@ class ReviewServiceTest {
      */
 	@Test
 	void testDeleteReviewWithNoAssociatedBook() {
-		assertThrows(EntityNotFoundException.class, () -> {
+		assertThrows(IllegalOperationException.class, () -> {
 			
 			BookEntity newBook =  factory.manufacturePojo(BookEntity.class);
 			entityManager.persist(newBook);

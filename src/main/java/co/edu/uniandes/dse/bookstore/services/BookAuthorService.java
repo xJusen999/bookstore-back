@@ -141,7 +141,7 @@ public class BookAuthorService {
 				bookEntity.get().getAuthors().add(authorEntity.get());
 		}
 		log.info("Termina proceso de reemplazar los autores del libro con id = {0}", bookId);
-		return getAuthors(bookId);
+		return bookEntity.get().getAuthors();
 	}
 
 	@Transactional

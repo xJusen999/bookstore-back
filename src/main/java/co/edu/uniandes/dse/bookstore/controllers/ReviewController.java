@@ -42,6 +42,7 @@ import org.springframework.web.bind.annotation.RestController;
 import co.edu.uniandes.dse.bookstore.dto.ReviewDTO;
 import co.edu.uniandes.dse.bookstore.entities.ReviewEntity;
 import co.edu.uniandes.dse.bookstore.exceptions.EntityNotFoundException;
+import co.edu.uniandes.dse.bookstore.exceptions.IllegalOperationException;
 import co.edu.uniandes.dse.bookstore.services.ReviewService;
 
 /**
@@ -132,12 +133,13 @@ public class ReviewController {
      *
      * @param bookId El ID del libro del cual se va a eliminar la reseña.
      * @param reviewId El ID de la reseña que se va a eliminar.
+	 * @throws IllegalOperationException 
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
      */
 	@DeleteMapping(value = "/{bookId}/reviews/{reviewId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteReview(@PathVariable("bookId") Long bookId, @PathVariable("reviewId") Long reviewId)
-			throws EntityNotFoundException {
+			throws EntityNotFoundException, IllegalOperationException {
 		reviewService.deleteReview(bookId, reviewId);
 	}
 
