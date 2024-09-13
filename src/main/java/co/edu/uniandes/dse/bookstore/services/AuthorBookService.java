@@ -147,8 +147,6 @@ public class AuthorBookService {
 			if (bookEntity.isEmpty())
 				throw new EntityNotFoundException(ErrorMessage.BOOK_NOT_FOUND);
 
-			if (!bookEntity.get().getAuthors().contains(authorEntity.get()))
-				bookEntity.get().getAuthors().add(authorEntity.get());
 		}
 		log.info("Finaliza proceso de reemplazar los libros asociados al author con id = {0}", authorId);
 		authorEntity.get().setBooks(books);
