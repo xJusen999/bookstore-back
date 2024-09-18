@@ -87,7 +87,7 @@ public class PrizeController {
 	 */
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public PrizeDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+	public PrizeDetailDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
 		PrizeEntity prizeEntity = prizeService.getPrize(id);
 		return modelMapper.map(prizeEntity, PrizeDetailDTO.class);
 	}
@@ -119,7 +119,7 @@ public class PrizeController {
 	 */
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public PrizeDetailDTO update(@PathVariable("id") Long id, @RequestBody PrizeDTO prizeDTO)
+	public PrizeDetailDTO update(@PathVariable Long id, @RequestBody PrizeDTO prizeDTO)
 			throws EntityNotFoundException {
 		PrizeEntity prizeEntity = prizeService.updatePrize(id, modelMapper.map(prizeDTO, PrizeEntity.class));
 		return modelMapper.map(prizeEntity, PrizeDetailDTO.class);
@@ -133,7 +133,7 @@ public class PrizeController {
 	 */
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {
+	public void delete(@PathVariable Long id) throws EntityNotFoundException, IllegalOperationException {
 		prizeService.deletePrize(id);
 	}
 

@@ -84,7 +84,7 @@ public class AuthorController {
 	 */
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+	public AuthorDetailDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
 		AuthorEntity authorEntity = authorService.getAuthor(id);
 		return modelMapper.map(authorEntity, AuthorDetailDTO.class);
 	}
@@ -116,7 +116,7 @@ public class AuthorController {
 	 */
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDTO update(@PathVariable("id") Long id, @RequestBody AuthorDTO authorDTO)
+	public AuthorDTO update(@PathVariable Long id, @RequestBody AuthorDTO authorDTO)
 			throws EntityNotFoundException {
 		AuthorEntity authorEntity = authorService.updateAuthor(id, modelMapper.map(authorDTO, AuthorEntity.class));
 		return modelMapper.map(authorEntity, AuthorDTO.class);
@@ -130,7 +130,7 @@ public class AuthorController {
 	 */
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {
+	public void delete(@PathVariable Long id) throws EntityNotFoundException, IllegalOperationException {
 		authorService.deleteAuthor(id);
 	}
 

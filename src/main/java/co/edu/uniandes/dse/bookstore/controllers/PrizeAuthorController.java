@@ -67,7 +67,7 @@ public class PrizeAuthorController {
 	 */
 	@PostMapping(value = "/{prizeId}/author/{authorId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDTO addAuthor(@PathVariable("prizeId") Long prizeId, @PathVariable("authorId") Long authorId)
+	public AuthorDTO addAuthor(@PathVariable Long prizeId, @PathVariable Long authorId)
 			throws EntityNotFoundException {
 		AuthorEntity authorEntity = prizeAuthorService.addAuthor(authorId, prizeId);
 		return modelMapper.map(authorEntity, AuthorDTO.class);
@@ -82,7 +82,7 @@ public class PrizeAuthorController {
 	 */
 	@GetMapping(value = "/{prizeId}/author")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDetailDTO getAuthor(@PathVariable("prizeId") Long prizeId) throws EntityNotFoundException {
+	public AuthorDetailDTO getAuthor(@PathVariable Long prizeId) throws EntityNotFoundException {
 		AuthorEntity authorEntity = prizeAuthorService.getAuthor(prizeId);
 		return modelMapper.map(authorEntity, AuthorDetailDTO.class);
 	}
@@ -98,7 +98,7 @@ public class PrizeAuthorController {
 	 */
 	@PutMapping(value = "/{prizeId}/author/{authorId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDetailDTO replaceAuthor(@PathVariable("prizeId") Long prizeId, @PathVariable("authorId") Long authorId)
+	public AuthorDetailDTO replaceAuthor(@PathVariable Long prizeId, @PathVariable Long authorId)
 			throws EntityNotFoundException {
 		AuthorEntity authorEntity = prizeAuthorService.replaceAuthor(prizeId, authorId);
 		return modelMapper.map(authorEntity, AuthorDetailDTO.class);
@@ -111,7 +111,7 @@ public class PrizeAuthorController {
 	 */
 	@DeleteMapping(value = "/{prizeId}/author")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void removeAuthor(@PathVariable("prizeId") Long prizeId) throws EntityNotFoundException {
+	public void removeAuthor(@PathVariable Long prizeId) throws EntityNotFoundException {
 		prizeAuthorService.removeAuthor(prizeId);
 	}
 

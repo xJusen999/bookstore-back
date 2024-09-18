@@ -84,7 +84,7 @@ public class BookController {
 	 */
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public BookDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+	public BookDetailDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
 		BookEntity bookEntity = bookService.getBook(id);
 		return modelMapper.map(bookEntity, BookDetailDTO.class);
 	}
@@ -116,7 +116,7 @@ public class BookController {
 	 */
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public BookDTO update(@PathVariable("id") Long id, @RequestBody BookDTO bookDTO)
+	public BookDTO update(@PathVariable Long id, @RequestBody BookDTO bookDTO)
 			throws EntityNotFoundException, IllegalOperationException {
 		BookEntity bookEntity = bookService.updateBook(id, modelMapper.map(bookDTO, BookEntity.class));
 		return modelMapper.map(bookEntity, BookDTO.class);
@@ -130,7 +130,7 @@ public class BookController {
 	 */
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {
+	public void delete(@PathVariable Long id) throws EntityNotFoundException, IllegalOperationException {
 		bookService.deleteBook(id);
 	}
 }

@@ -70,7 +70,7 @@ public class BookAuthorController {
 	 */
 	@PostMapping(value = "/{bookId}/authors/{authorId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDetailDTO addAuthor(@PathVariable("authorId") Long authorId, @PathVariable("bookId") Long bookId)
+	public AuthorDetailDTO addAuthor(@PathVariable Long authorId, @PathVariable Long bookId)
 			throws EntityNotFoundException {
 		AuthorEntity authorEntity = bookAuthorService.addAuthor(bookId, authorId);
 		return modelMapper.map(authorEntity, AuthorDetailDTO.class);
@@ -85,7 +85,7 @@ public class BookAuthorController {
 	 */
 	@GetMapping(value = "/{bookId}/authors/{authorId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public AuthorDetailDTO getAuthor(@PathVariable("authorId") Long authorId, @PathVariable("bookId") Long bookId)
+	public AuthorDetailDTO getAuthor(@PathVariable Long authorId, @PathVariable Long bookId)
 			throws EntityNotFoundException, IllegalOperationException {
 		AuthorEntity authorEntity = bookAuthorService.getAuthor(bookId, authorId);
 		return modelMapper.map(authorEntity, AuthorDetailDTO.class);
@@ -102,7 +102,7 @@ public class BookAuthorController {
 	 */
 	@PutMapping(value = "/{bookId}/authors")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<AuthorDetailDTO> addAuthors(@PathVariable("bookId") Long bookId, @RequestBody List<AuthorDTO> authors)
+	public List<AuthorDetailDTO> addAuthors(@PathVariable Long bookId, @RequestBody List<AuthorDTO> authors)
 			throws EntityNotFoundException {
 		List<AuthorEntity> entities = modelMapper.map(authors, new TypeToken<List<AuthorEntity>>() {
 		}.getType());
@@ -120,7 +120,7 @@ public class BookAuthorController {
 	 */
 	@GetMapping(value = "/{bookId}/authors")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<AuthorDetailDTO> getAuthors(@PathVariable("bookId") Long bookId) throws EntityNotFoundException {
+	public List<AuthorDetailDTO> getAuthors(@PathVariable Long bookId) throws EntityNotFoundException {
 		List<AuthorEntity> authorEntity = bookAuthorService.getAuthors(bookId);
 		return modelMapper.map(authorEntity, new TypeToken<List<AuthorDetailDTO>>() {
 		}.getType());
@@ -134,7 +134,7 @@ public class BookAuthorController {
 	 */
 	@DeleteMapping(value = "/{bookId}/authors/{authorId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void removeAuthor(@PathVariable("authorId") Long authorId, @PathVariable("bookId") Long bookId)
+	public void removeAuthor(@PathVariable Long authorId, @PathVariable Long bookId)
 			throws EntityNotFoundException {
 		bookAuthorService.removeAuthor(bookId, authorId);
 	}

@@ -67,7 +67,7 @@ public class BookEditorialController {
 	 */
 	@PutMapping(value = "/{bookId}/editorial")
 	@ResponseStatus(code = HttpStatus.OK)
-	public BookDetailDTO replaceEditorial(@PathVariable("bookId") Long bookId, @RequestBody EditorialDTO editorialDTO)
+	public BookDetailDTO replaceEditorial(@PathVariable Long bookId, @RequestBody EditorialDTO editorialDTO)
 			throws EntityNotFoundException {
 		BookEntity bookEntity = bookEditorialService.replaceEditorial(bookId, editorialDTO.getId());
 		return modelMapper.map(bookEntity, BookDetailDTO.class);

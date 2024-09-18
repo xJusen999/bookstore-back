@@ -70,7 +70,7 @@ public class EditorialController {
      */
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public EditorialDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+	public EditorialDetailDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
 		EditorialEntity editorialEntity = editorialService.getEditorial(id);
 		return modelMapper.map(editorialEntity, EditorialDetailDTO.class);
 	}
@@ -120,7 +120,7 @@ public class EditorialController {
 	
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public EditorialDTO update(@PathVariable("id") Long id, @RequestBody EditorialDTO editorialDTO)
+	public EditorialDTO update(@PathVariable Long id, @RequestBody EditorialDTO editorialDTO)
 			throws EntityNotFoundException {
 		EditorialEntity editorialEntity = editorialService.updateEditorial(id,
 				modelMapper.map(editorialDTO, EditorialEntity.class));
@@ -135,7 +135,7 @@ public class EditorialController {
      */
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {
+	public void delete(@PathVariable Long id) throws EntityNotFoundException, IllegalOperationException {
 		editorialService.deleteEditorial(id);
 	}
 }

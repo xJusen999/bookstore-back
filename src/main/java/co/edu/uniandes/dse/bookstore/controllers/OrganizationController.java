@@ -84,7 +84,7 @@ public class OrganizationController {
 	 */
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public OrganizationDetailDTO findOne(@PathVariable("id") Long id) throws EntityNotFoundException {
+	public OrganizationDetailDTO findOne(@PathVariable Long id) throws EntityNotFoundException {
 		OrganizationEntity organizationEntity = organizationService.getOrganization(id);
 		return modelMapper.map(organizationEntity, OrganizationDetailDTO.class);
 	}
@@ -119,7 +119,7 @@ public class OrganizationController {
 	 */
 	@PutMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public OrganizationDTO update(@PathVariable("id") Long id, @RequestBody OrganizationDTO organizationDTO)
+	public OrganizationDTO update(@PathVariable Long id, @RequestBody OrganizationDTO organizationDTO)
 			throws EntityNotFoundException {
 		OrganizationEntity organizationEntity = organizationService.updateOrganization(id,
 				modelMapper.map(organizationDTO, OrganizationEntity.class));
@@ -134,7 +134,7 @@ public class OrganizationController {
 	 */
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable("id") Long id) throws EntityNotFoundException, IllegalOperationException {
+	public void delete(@PathVariable Long id) throws EntityNotFoundException, IllegalOperationException {
 		organizationService.deleteOrganization(id);
 	}
 

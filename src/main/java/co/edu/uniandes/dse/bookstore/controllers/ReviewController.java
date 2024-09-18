@@ -73,7 +73,7 @@ public class ReviewController {
 	 */
 	@PostMapping(value = "/{bookId}/reviews")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ReviewDTO createReview(@PathVariable("bookId") Long bookId, @RequestBody ReviewDTO review)
+	public ReviewDTO createReview(@PathVariable Long bookId, @RequestBody ReviewDTO review)
 			throws EntityNotFoundException {
 		ReviewEntity reviewEnity = modelMapper.map(review, ReviewEntity.class);
 		ReviewEntity newReview = reviewService.createReview(bookId, reviewEnity);
@@ -89,7 +89,7 @@ public class ReviewController {
 	 */
 	@GetMapping(value = "/{bookId}/reviews")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<ReviewDTO> getReviews(@PathVariable("bookId") Long bookId) throws EntityNotFoundException {
+	public List<ReviewDTO> getReviews(@PathVariable Long bookId) throws EntityNotFoundException {
 		List<ReviewEntity> reviews = reviewService.getReviews(bookId);
 		return modelMapper.map(reviews, new TypeToken<List<ReviewDTO>>() {
 		}.getType());
@@ -104,7 +104,7 @@ public class ReviewController {
 	 */
 	@GetMapping(value = "/{bookId}/reviews/{reviewId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public ReviewDTO getReview(@PathVariable("bookId") Long bookId, @PathVariable("reviewId") Long reviewId)
+	public ReviewDTO getReview(@PathVariable Long bookId, @PathVariable Long reviewId)
 			throws EntityNotFoundException {
 		ReviewEntity entity = reviewService.getReview(bookId, reviewId);
 		return modelMapper.map(entity, ReviewDTO.class);
@@ -121,7 +121,7 @@ public class ReviewController {
 	 */
 	@PutMapping(value = "/{bookId}/reviews/{reviewsId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public ReviewDTO updateReview(@PathVariable("bookId") Long bookId, @PathVariable("reviewsId") Long reviewId,
+	public ReviewDTO updateReview(@PathVariable Long bookId, @PathVariable("reviewsId") Long reviewId,
 			@RequestBody ReviewDTO review) throws EntityNotFoundException {
 		ReviewEntity reviewEntity = modelMapper.map(review, ReviewEntity.class);
 		ReviewEntity newEntity = reviewService.updateReview(bookId, reviewId, reviewEntity);
@@ -138,7 +138,7 @@ public class ReviewController {
      */
 	@DeleteMapping(value = "/{bookId}/reviews/{reviewId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteReview(@PathVariable("bookId") Long bookId, @PathVariable("reviewId") Long reviewId)
+	public void deleteReview(@PathVariable Long bookId, @PathVariable Long reviewId)
 			throws EntityNotFoundException, IllegalOperationException {
 		reviewService.deleteReview(bookId, reviewId);
 	}

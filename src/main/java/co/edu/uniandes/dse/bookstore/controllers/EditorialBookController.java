@@ -72,7 +72,7 @@ public class EditorialBookController {
 	 */
 	@PostMapping(value = "/{editorialId}/books/{bookId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public BookDTO addBook(@PathVariable("editorialId") Long editorialId, @PathVariable("bookId") Long booklId)
+	public BookDTO addBook(@PathVariable Long editorialId, @PathVariable("bookId") Long booklId)
 			throws EntityNotFoundException {
 		BookEntity bookEntity = editorialBookService.addBook(booklId, editorialId);
 		return modelMapper.map(bookEntity, BookDTO.class);
@@ -88,7 +88,7 @@ public class EditorialBookController {
 	 */
 	@GetMapping(value = "/{editorialId}/books")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<BookDetailDTO> getBooks(@PathVariable("editorialId") Long editorialId) throws EntityNotFoundException {
+	public List<BookDetailDTO> getBooks(@PathVariable Long editorialId) throws EntityNotFoundException {
 		List<BookEntity> bookList = editorialBookService.getBooks(editorialId);
 		return modelMapper.map(bookList, new TypeToken<List<BookDetailDTO>>() {
 		}.getType());
@@ -105,7 +105,7 @@ public class EditorialBookController {
 	 */
 	@GetMapping(value = "/{editorialId}/books/{bookId}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public BookDetailDTO getBook(@PathVariable("editorialId") Long editorialId, @PathVariable("bookId") Long bookId)
+	public BookDetailDTO getBook(@PathVariable Long editorialId, @PathVariable Long bookId)
 			throws EntityNotFoundException, IllegalOperationException {
 		BookEntity bookEntity = editorialBookService.getBook(editorialId, bookId);
 		return modelMapper.map(bookEntity, BookDetailDTO.class);
