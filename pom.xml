@@ -12,7 +12,7 @@
 	<artifactId>bookstore-back</artifactId>
 	<version>0.0.2-SNAPSHOT</version>
 	<name>bookstore-back</name>
-	<description>Backend project for BookStore</description>
+	<description>Backend project for BookStore, built with SpringBoot</description>
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>21</java.version>
