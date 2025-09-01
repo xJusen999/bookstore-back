@@ -40,6 +40,7 @@ pipeline {
          }
          steps {
             script {
+               CURRENT_STAGE = 'Build'
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
                      java -version
@@ -56,7 +57,8 @@ pipeline {
          }
          steps {
             script {
-               docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {                  
+               CURRENT_STAGE = 'Testing'
+               docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {
                   sh '''
                      mvn test
                   '''
@@ -100,7 +102,7 @@ pipeline {
         }
       }
       aborted {
-         sh "echo 'Build aborted because time limit was reached'"
+         error("Pipeline aborted cause time limit exceeded at stage ${CURRENT_STAGE}")
       }
    }
 }
