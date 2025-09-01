@@ -34,7 +34,7 @@ pipeline {
          }
       }
       stage('Build') {
-         Build artifacts
+         // Build artifacts
          options {
             timeout(time: 1, unit: 'MINUTES')
          }
