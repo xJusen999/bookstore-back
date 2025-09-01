@@ -1,7 +1,7 @@
 pipeline { 
    agent any 
    environment {
-      GIT_REPO = 'bookstore-back-new'
+      GIT_REPO = 'bookstore-back'
       GIT_CREDENTIAL_ID = 'ms-GitHub-Credentials-for-jenkins'
       SONARQUBE_URL = 'http://172.24.101.209:8082/sonar-isis2603'
       ARCHID_TOKEN = credentials('archid')
@@ -98,6 +98,8 @@ pipeline {
         dir("${env.GIT_REPO}@tmp") {
           deleteDir()
         }
+        sh "echo ${env.GIT_REPO}"
+        sh "echo ${env.BUILD_NUMBER}"
         sh "bash validateLog.sh '${env.GIT_REPO}' '${env.BUILD_NUMBER}'"
 
       }
