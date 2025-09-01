@@ -51,9 +51,9 @@ pipeline {
       }
       stage('Testing') {
          // Run unit tests
-         // options {
-         //    timeout(time: 2, unit: 'MINUTES')
-         // }
+         options {
+            timeout(time: 2, unit: 'MINUTES')
+         }
          steps {
             script {
                docker.image('citools-isis2603:latest').inside('-v $HOME/.m2:/root/.m2:z -u root') {                  
@@ -98,9 +98,9 @@ pipeline {
         dir("${env.GIT_REPO}@tmp") {
           deleteDir()
         }
-      //   sh "bash ./validateLog.sh '${env.GIT_REPO}' '${env.BUILD_NUMBER}'"
-        sh "find './DATA/jenkins_home/jobs/${env.GIT_REPO}/builds/${env.BUILD_NUMBER}/' -type f -name 'log' -size +1M -ls"
-
+      }
+      aborted {
+         sh "echo 'Build aborted because time limit was reached'"
       }
    }
 }
