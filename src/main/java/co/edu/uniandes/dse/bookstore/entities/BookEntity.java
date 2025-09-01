@@ -66,7 +66,6 @@ public class BookEntity extends BaseEntity {
 	@OneToMany(mappedBy = "book", cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<ReviewEntity> reviews = new ArrayList<>();
 
-	@PodamExclude
 	@ManyToMany
 	private List<AuthorEntity> authors = new ArrayList<>();
 }
