@@ -34,7 +34,7 @@ pipeline {
          }
       }
       stage('Build') {
-         // Build artifacts
+         Build artifacts
          options {
             timeout(time: 1, unit: 'MINUTES')
          }
@@ -98,6 +98,8 @@ pipeline {
         dir("${env.GIT_REPO}@tmp") {
           deleteDir()
         }
+        sh 'bash validateLog.sh "${GIT_REPO}" "${env.BUILD_NUMBER}"'
+
       }
    }
 }
