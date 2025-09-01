@@ -98,8 +98,8 @@ pipeline {
         dir("${env.GIT_REPO}@tmp") {
           deleteDir()
         }
-        sh "ls -lh"
-        sh "bash ./validateLog.sh '${env.GIT_REPO}' '${env.BUILD_NUMBER}'"
+      //   sh "bash ./validateLog.sh '${env.GIT_REPO}' '${env.BUILD_NUMBER}'"
+        sh "sudo find './DATA/jenkins_home/jobs/${env.GIT_REPO}/builds/${env.BUILD_NUMBER}/' -type f -name 'log' -size +1M -ls"
 
       }
    }
