@@ -98,11 +98,12 @@ pipeline {
         cleanWs()
         deleteDir() 
         dir("${env.GIT_REPO}@tmp") {
+         sh "echo $PWD"
           deleteDir()
         }
       }
       aborted {
-         error("Pipeline aborted cause time limit exceeded at stage ${CURRENT_STAGE}")
+         error("⏰ Pipeline aborted: time limit exceeded at stage '${CURRENT_STAGE}'")
       }
    }
 }
