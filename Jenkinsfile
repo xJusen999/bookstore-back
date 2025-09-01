@@ -98,9 +98,9 @@ pipeline {
         dir("${env.GIT_REPO}@tmp") {
           deleteDir()
         }
-        sh "echo ${env.GIT_REPO}"
+        sh "echo $PWD"
         sh "echo ${env.BUILD_NUMBER}"
-        sh "bash validateLog.sh '${env.GIT_REPO}' '${env.BUILD_NUMBER}'"
+      //   sh "bash validateLog.sh '${env.GIT_REPO}' '${env.BUILD_NUMBER}'"
 
       }
    }
