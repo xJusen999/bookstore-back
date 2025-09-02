@@ -98,7 +98,6 @@ pipeline {
         cleanWs()
         deleteDir() 
         dir("${env.GIT_REPO}@tmp") {
-         sh "echo $PWD"
           deleteDir()
         }
       }

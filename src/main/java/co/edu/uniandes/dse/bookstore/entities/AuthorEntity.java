@@ -54,6 +54,7 @@ public class AuthorEntity extends BaseEntity {
 	@PodamStrategyValue(DateStrategy.class)
 	private Date birthDate;
 
+	@PodamExclude
 	@ManyToMany(mappedBy = "authors")
 	private List<BookEntity> books = new ArrayList<>();
 
