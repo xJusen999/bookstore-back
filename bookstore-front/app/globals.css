@@ -1,4 +1,4 @@
-/* ===== Base ===== */
+
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -8,15 +8,15 @@ body{
   color: var(--text);
 }
 
-/* ===== Letterboxd-ish Tokens ===== */
+
 :root{
-  --bg:#14181c;          /* fondo app */
-  --panel:#2c3440;       /* header/panel */
-  --card:#202830;        /* tarjetas */
-  --text:#d7e0ea;        /* texto principal */
-  --muted:#9fb0c0;       /* texto secundario */
+  --bg:#14181c;          
+  --panel:#2c3440;       
+  --card:#202830;       
+  --text:#d7e0ea;        
+  --muted:#9fb0c0;      
   --border:#1f262e;
-  --accent:#00e054;      /* verde Letterboxd */
+  --accent:#00e054;     
   --accent-700:#00c34a;
   --danger:#ff5a5f;
 
@@ -24,7 +24,7 @@ body{
   --shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
-/* ===== Header / Layout ===== */
+
 .header{
   position:sticky; top:0; z-index:40;
   background: linear-gradient(180deg, var(--panel), #1b232c 140%);
@@ -46,11 +46,10 @@ body{
 
 .container{ max-width:1240px; margin:26px auto; padding:0 22px }
 
-/* ===== Headings ===== */
+
 .kicker{ color:#6adf99; text-transform:uppercase; font-size:12px; letter-spacing:.3px }
 .h1{ font-size:40px; font-weight:800; margin:6px 0 0 0 }
 
-/* ===== Grid / Cards ===== */
 .grid{ display:grid; gap:18px }
 .grid-cards{ grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); }
 
@@ -61,7 +60,7 @@ body{
   overflow:hidden; display:flex; flex-direction:column;
 }
 
-/* imagen uniforme */
+
 .thumb{ width:100%; aspect-ratio:16/9; background:#0e141a; overflow:hidden }
 .thumb img{ width:100%; height:100%; object-fit:cover; display:block }
 
@@ -72,7 +71,7 @@ body{
 
 .hr{ height:1px; background:#24303a; border:0; margin:12px 0 }
 
-/* ===== Buttons ===== */
+
 .btn{
   display:inline-flex; align-items:center; justify-content:center;
   padding:10px 14px; border-radius:999px; text-decoration:none; cursor:pointer;
@@ -85,7 +84,7 @@ body{
 .btn.danger{ background:linear-gradient(180deg, #ff8e8e, var(--danger)); border-color:transparent; color:#2b0000 }
 .btn.ghost{ background:transparent }
 
-/* ===== Form ===== */
+
 .form{ display:grid; gap:16px; max-width:760px }
 .row{ display:grid; grid-template-columns: 1fr 1fr; gap:16px }
 .label{ font-size:13px; color:var(--muted) }
@@ -97,7 +96,7 @@ body{
   border-color:#66e09a; box-shadow: 0 0 0 5px rgba(0,224,84,.18);
 }
 
-/* ===== States ===== */
+
 .center{ display:grid; place-items:center; min-height:220px; color:var(--muted) }
 .alert{ padding:14px 16px; border-radius: 14px; background:#2a1212; border:1px solid #6b1c1c; color:#ffdede }
 .empty{ color:var(--muted); padding:18px; background:#11171e; border:1px dashed #3a4552; border-radius: var(--radius) }
