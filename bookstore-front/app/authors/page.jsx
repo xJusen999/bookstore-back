@@ -30,7 +30,6 @@ export default function AuthorsPage() {
       const res = await fetch(`/api/authors/${id}`, { method: "DELETE" });
 
       if (res.status === 412) {
-        // Regla del backend que no deja eliminar usuarios con datos asociados
         let msg = "No se puede eliminar: el autor tiene datos asociados (p. ej. libros).";
         try {
           const data = await res.json().catch(() => null);
@@ -42,14 +41,14 @@ export default function AuthorsPage() {
 
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-      // Eliminado OK -> actualiza estado
+      
       setAuthors((prev) => prev.filter((a) => a.id !== id));
     } catch (e) {
       alert(e.message || String(e));
     }
   }
 
-  // (Opcional) Sembrar un autor demo rápido - sirve para probar el borrado de un autor
+ 
   async function seedDemo() {
     const sample = {
       name: "J. K. Rowling",
@@ -78,7 +77,7 @@ export default function AuthorsPage() {
           <h1 className="h1">Autores</h1>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
-          <Link href="/create" className="btn primary">➕ Crear</Link>
+          <Link href="/create" className="btn primary"> Crear</Link>
           <button className="btn ghost" onClick={seedDemo}>Sembrar demo</button>
         </div>
       </div>

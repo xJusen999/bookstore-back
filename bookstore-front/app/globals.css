@@ -101,3 +101,7 @@ body{
 .alert{ padding:14px 16px; border-radius: 14px; background:#2a1212; border:1px solid #6b1c1c; color:#ffdede }
 .empty{ color:var(--muted); padding:18px; background:#11171e; border:1px dashed #3a4552; border-radius: var(--radius) }
 .row-end{ display:flex; gap:10px; justify-content:flex-end }
+
+.card-link{ display:block; color:inherit; text-decoration:none }
+.card-link:focus{ outline: none; }
+.card-link:focus-visible{ outline: 3px solid rgba(0,224,84,.6); outline-offset: 3px; border-radius: var(--radius); }
