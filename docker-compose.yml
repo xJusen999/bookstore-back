@@ -1,0 +1,32 @@
+
+services:
+  backend:
+    build:
+      context: .               
+      dockerfile: Dockerfile
+    container_name: bookstore-back
+    ports:
+      - "8080:8080"
+    networks:
+      - bookstore-net
+
+  frontend:
+    build:
+      context: ./bookstore-front   
+      dockerfile: Dockerfile
+      args:
+        BACKEND_URL: http://backend:8080
+    container_name: bookstore-front
+    environment:
+      BACKEND_URL: http://backend:8080
+      NODE_ENV: production
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - bookstore-net
+
+networks:
+  bookstore-net:
